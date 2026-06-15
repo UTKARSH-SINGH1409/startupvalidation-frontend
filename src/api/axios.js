@@ -1,7 +1,15 @@
 import axios from "axios";
 
+const apiBaseURL = import.meta.env.VITE_API_BASE_URL;
+
+if (!apiBaseURL) {
+  throw new Error(
+    "Missing VITE_API_BASE_URL in environment. Add it to .env or Vite environment variables."
+  );
+}
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: apiBaseURL,
   headers: {
     "Content-Type": "application/json",
   },
